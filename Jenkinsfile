@@ -36,7 +36,14 @@ pipeline {
         }
         stage('Deploying container to Kubernetes') {
            steps {
-                sh "helm install project-1 python-project --set appimage=${registry}:v${BUILD_NUMBER}"
+                def serviceExists = sh(
+                    scripts "kubectl get service python-app -n default"
+                    returnStatus: true
+                ) ==0
+               if (serviceExixts){
+                   sh "helm install project-1 python-project --set appimage=${registry}:v${BUILD_NUMBER}"
+               } else {
+                    sh "helm install project-1 python-project --set appimage=${registry}:v${BUILD_NUMBER}"
             }
         }      
     }
