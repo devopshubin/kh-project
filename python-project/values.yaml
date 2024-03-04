@@ -96,3 +96,15 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+# values.yaml
+elasticsearch:
+  replicas: 1
+  minimumMasterNodes: 1
+  antiAffinity: false
+
+kibana:
+  replicas: 1
+
+logstash:
+  replicas: 1
