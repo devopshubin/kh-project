@@ -3,7 +3,7 @@ kind: Service
 metadata: 
   name: python-app
 spec:
-  type: 13.200.251.123
+  type: NodePort
   selector: 
     app: python
   ports:
